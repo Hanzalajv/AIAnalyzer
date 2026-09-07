@@ -10,11 +10,11 @@ st.set_page_config(
 )
 
 # Main title
-st.title("✈️ Smart Airport Check-in Planning Agent")
+st.title(" Smart Airport Check-in Planning Agent")
 st.markdown("---")
 
 # Problem Formulation
-st.header("📋 Problem Formulation")
+st.header("Problem Formulation")
 
 # Initial and Goal States
 initial_state = "Airport Entrance"
@@ -121,7 +121,7 @@ def find_plan(start, goal):
 
 # Generate State Space
 st.markdown("---")
-st.header("🗺️ State Space Generation")
+st.header(" State Space Generation")
 
 reachable_states = generate_state_space(initial_state)
 
@@ -134,21 +134,21 @@ cols = st.columns(3)
 for i, state in enumerate(reachable_states):
     with cols[i % 3]:
         if state == initial_state:
-            st.info(f"🔵 **{state}** (Start)")
+            st.info(f" **{state}** (Start)")
         elif state == goal_state:
-            st.success(f"✅ **{state}** (Goal)")
+            st.success(f" **{state}** (Goal)")
         else:
-            st.write(f"⚪ {state}")
+            st.write(f" {state}")
 
 # Generate Plan
 st.markdown("---")
-st.header("🛤️ Solution Execution")
+st.header(" Solution Execution")
 
 if st.button("Generate Check-in Plan", type="primary"):
     plan = find_plan(initial_state, goal_state)
     
     if plan:
-        st.success("✅ Optimal check-in plan generated successfully!")
+        st.success(" Optimal check-in plan generated successfully!")
         
         # Display plan sequence
         st.subheader("Planned Checkpoint Sequence")
@@ -196,15 +196,15 @@ if st.button("Generate Check-in Plan", type="primary"):
         
         # Display cycle avoidance
         st.subheader("Cycle Avoidance")
-        st.write(f"✅ Visited {len(plan)} states without revisiting any checkpoint")
-        st.write(f"✅ Avoided {len(reachable_states) - len(plan)} unnecessary states")
+        st.write(f" Visited {len(plan)} states without revisiting any checkpoint")
+        st.write(f" Avoided {len(reachable_states) - len(plan)} unnecessary states")
         
     else:
-        st.error("❌ No valid plan found!")
+        st.error(" No valid plan found!")
 
 # Sidebar Information
 with st.sidebar:
-    st.header("ℹ️ Agent Information")
+    st.header(" Agent Information")
     st.write("**Agent Type:** Problem-Solving Agent")
     st.write("**Environment:** Static (Airport)")
     st.write("**Search Strategy:** Breadth-First Search")
