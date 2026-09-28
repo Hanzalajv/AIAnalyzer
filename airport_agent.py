@@ -144,84 +144,85 @@ for i, state in enumerate(reachable_states):
 st.markdown("---")
 st.header(" Solution Execution")
 
-if st.button("Generate Check-in Plan", type="primary"):
-    plan = find_plan(initial_state, goal_state)
+st.button("G)")
+
+p
     
-    if plan:
-        st.success(" Optimal check-in plan generated successfully!")
+#     if plan:
+#         st.success(" Optimal check-in plan generated successfully!")
         
-        # Display plan sequence
-        st.subheader("Planned Checkpoint Sequence")
+#         # Display plan sequence
+#         st.subheader("Planned Checkpoint Sequence")
         
-        # Create a dataframe for the plan
-        plan_data = []
-        for i in range(len(plan) - 1):
-            current = plan[i]
-            next_state = plan[i + 1]
-            cost = 0
-            for ns, c in airport_graph.get(current, []):
-                if ns == next_state:
-                    cost = c
-                    break
+#         # Create a dataframe for the plan
+#         plan_data = []
+#         for i in range(len(plan) - 1):
+#             current = plan[i]
+#             next_state = plan[i + 1]
+#             cost = 0
+#             for ns, c in airport_graph.get(current, []):
+#                 if ns == next_state:
+#                     cost = c
+#                     break
             
-            plan_data.append({
-                "Step": i + 1,
-                "From": current,
-                "To": next_state,
-                "Processing Time (min)": cost,
-                "Status": "Pending"
-            })
+#             plan_data.append({
+#                 "Step": i + 1,
+#                 "From": current,
+#                 "To": next_state,
+#                 "Processing Time (min)": cost,
+#                 "Status": "Pending"
+#             })
         
-        plan_df = pd.DataFrame(plan_data)
-        st.dataframe(plan_df, width='stretch')
+#         plan_df = pd.DataFrame(plan_data)
+#         st.dataframe(plan_df, width='stretch')
         
-        # Visualize the path
-        st.subheader("Visual Path")
-        path_str = " → ".join(plan)
-        st.markdown(f"**{path_str}**")
+#         # Visualize the path
+#         st.subheader("Visual Path")
+#         path_str = " → ".join(plan)
+#         st.markdown(f"**{path_str}**")
         
-        # Calculate and display metrics
-        total_time = path_cost(plan)
+#         # Calculate and display metrics
+#         total_time = path_cost(plan)
         
-        col1, col2, col3, col4 = st.columns(4)
-        with col1:
-            st.metric("Total Checkpoints", len(plan))
-        with col2:
-            st.metric("Total Processing Time", f"{total_time} min")
-        with col3:
-            st.metric("Reachable States", len(reachable_states))
-        with col4:
-            efficiency = (len(plan) / len(reachable_states)) * 100
-            st.metric("Path Efficiency", f"{efficiency:.1f}%")
+#         col1, col2, col3, col4 = st.columns(4)
+#         with col1:
+#             st.metric("Total Checkpoints", len(plan))
+#         with col2:
+#             st.metric("Total Processing Time", f"{total_time} min")
+#         with col3:
+#             st.metric("Reachable States", len(reachable_states))
+#         with col4:
+#             efficiency = (len(plan) / len(reachable_states)) * 100
+#             st.metric("Path Efficiency", f"{efficiency:.1f}%")
         
-        # Display cycle avoidance
-        st.subheader("Cycle Avoidance")
-        st.write(f" Visited {len(plan)} states without revisiting any checkpoint")
-        st.write(f" Avoided {len(reachable_states) - len(plan)} unnecessary states")
+#         # Display cycle avoidance
+#         st.subheader("Cycle Avoidance")
+#         st.write(f" Visited {len(plan)} states without revisiting any checkpoint")
+#         st.write(f" Avoided {len(reachable_states) - len(plan)} unnecessary states")
         
-    else:
-        st.error(" No valid plan found!")
+#     else:
+#         st.error(" No valid plan found!")
 
-# Sidebar Information
-with st.sidebar:
-    st.header(" Agent Information")
-    st.write("**Agent Type:** Problem-Solving Agent")
-    st.write("**Environment:** Static (Airport)")
-    st.write("**Search Strategy:** Breadth-First Search")
+# # Sidebar Information
+# with st.sidebar:
+#     st.header(" Agent Information")
+#     st.write("**Agent Type:** Problem-Solving Agent")
+#     st.write("**Environment:** Static (Airport)")
+#     st.write("**Search Strategy:** Breadth-First Search")
     
-    st.markdown("---")
-    st.subheader("Performance Measures")
-    st.write("• Minimize total processing time")
-    st.write("• Avoid unnecessary checkpoints")
-    st.write("• No revisiting completed checkpoints")
+#     st.markdown("---")
+#     st.subheader("Performance Measures")
+#     st.write("• Minimize total processing time")
+#     st.write("• Avoid unnecessary checkpoints")
+#     st.write("• No revisiting completed checkpoints")
     
-    st.markdown("---")
-    st.subheader("Constraints")
-    st.write("• Minimum 6 checkpoints ✓")
-    st.write("• Static environment ✓")
-    st.write("• No revisiting states ✓")
-    st.write("• Cycle avoidance ✓")
+#     st.markdown("---")
+#     st.subheader("Constraints")
+#     st.write("• Minimum 6 checkpoints ✓")
+#     st.write("• Static environment ✓")
+#     st.write("• No revisiting states ✓")
+#     st.write("• Cycle avoidance ✓")
 
-# Footer
-st.markdown("---")
-st.markdown("Built with  | Airport Check-in Problem-Solving Agent")
+# # Footer
+# st.markdown("---")
+# st.markdown("Built with  | Airport Check-in Problem-Solving Agent")

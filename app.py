@@ -11,11 +11,11 @@ st.set_page_config(
 )
 
 # Main title
-st.title("📊 Exploratory Data Analysis Dashboard")
+st.title(" Exploratory Data Analysis Dashboard")
 st.markdown("---")
 
 # Sidebar for controls
-st.sidebar.header("📁 Data Upload")
+st.sidebar.header(" Data Upload")
 uploaded_file = st.sidebar.file_uploader(
     "Choose a CSV file",
     type=['csv'],
@@ -34,14 +34,14 @@ if uploaded_file is not None:
         st.session_state.data = df
         
         # Display success message
-        st.sidebar.success(f"✅ File loaded: {uploaded_file.name}")
+        st.sidebar.success(f" File loaded: {uploaded_file.name}")
         
     except Exception as e:
         st.sidebar.error(f"❌ Error loading file: {str(e)}")
         st.session_state.data = None
 else:
     # Load default titanic dataset if available
-    st.sidebar.info("ℹ️ No file uploaded. You can upload a CSV file or use the demo below.")
+    st.sidebar.info("ℹNo file uploaded. You can upload a CSV file or use the demo below.")
     
     # Create a sample dataset for demonstration
     if st.sidebar.button("Load Demo Dataset"):
@@ -62,7 +62,7 @@ else:
             'Embarked': np.random.choice(['S', 'C', 'Q'], 100)
         }
         st.session_state.data = pd.DataFrame(demo_data)
-        st.sidebar.success("✅ Demo dataset loaded!")
+        st.sidebar.success(" Demo dataset loaded!")
 
 # Main content area
 if st.session_state.data is not None:
@@ -107,17 +107,17 @@ if st.session_state.data is not None:
     st.markdown("---")
     
     # Dataset Preview
-    st.subheader("📄 Dataset Preview (First 5 Rows)")
+    st.subheader(" Dataset Preview (First 5 Rows)")
     st.dataframe(df.head(), width='stretch')
     
     st.markdown("---")
     
     # Bottom section: Visualization
-    st.header("📈 Data Visualization")
+    st.header(" Data Visualization")
     
     # Sidebar for column selection
     st.sidebar.markdown("---")
-    st.sidebar.header("🔍 Analysis Controls")
+    st.sidebar.header(" Analysis Controls")
     
     # Column selection dropdown
     selected_column = st.sidebar.selectbox(
@@ -193,7 +193,7 @@ if st.session_state.data is not None:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("📊 Column Statistics")
+        st.subheader(" Column Statistics")
         if column_type == "numerical":
             stats = {
                 'Mean': df[selected_column].mean(),
@@ -235,10 +235,10 @@ else:
     # Show example of what the app does
     st.markdown("""
     ### Features:
-    - 📁 **Upload CSV files** for instant analysis
-    - 📊 **View dataset metadata** including dimensions, types, and missing values
-    - 📈 **Interactive visualizations** for both numerical and categorical data
-    - 🔍 **Automated column type detection** and appropriate chart generation
+    -  **Upload CSV files** for instant analysis
+    -  **View dataset metadata** including dimensions, types, and missing values
+    -  **Interactive visualizations** for both numerical and categorical data
+    -  **Automated column type detection** and appropriate chart generation
     
     ### How to use:
     1. Upload a CSV file or load the demo dataset
@@ -248,4 +248,4 @@ else:
 
 # Footer
 st.markdown("---")
-st.markdown("Built with ❤️ using Streamlit | EDA Dashboard v1.0")
+
